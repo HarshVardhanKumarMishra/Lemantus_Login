@@ -15,7 +15,7 @@ class WelcomeScreen extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF0F2027), Color(0xFF203A43), Color(0xFF2C5364)], // Sleek Dark Theme
+            colors: [Color(0xFF0F2027), Color(0xFF203A43), Color(0xFF2C5364)], 
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -23,7 +23,6 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Success Icon Animation Placeholder
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
@@ -47,7 +46,6 @@ class WelcomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             
-            // Subtitle with Token Proof
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Text(
@@ -58,7 +56,6 @@ class WelcomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             
-            // Token Display (Proves Architecture works!)
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
@@ -84,7 +81,6 @@ class WelcomeScreen extends StatelessWidget {
               icon: const Icon(Icons.logout),
               label: const Text('Secure Logout', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               onPressed: () {
-                // Navigate back to Login Screen and clear history
                 Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(builder: (context) => const LoginScreen()),
                   (route) => false,

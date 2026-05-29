@@ -29,8 +29,6 @@ class _LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<_LoginForm> {
-  // 1. FORM VALIDATION: This key acts like a global reference to our form, 
-  // allowing us to validate all inputs before sending data to the backend.
   final _formKey = GlobalKey<FormState>();
   
   final _usernameController = TextEditingController();
@@ -44,7 +42,6 @@ class _LoginFormState extends State<_LoginForm> {
   }
 
   void _attemptLogin() {
-    // 2. PRE-CHECK: If the form is empty, don't even bother the BLoC.
     if (_formKey.currentState!.validate()) {
       context.read<LoginBloc>().add(
             LoginRequested(
@@ -58,11 +55,10 @@ class _LoginFormState extends State<_LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // 3. MODERN DESIGN: A sleek, professional gradient background
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF1E3C72), Color(0xFF2A5298)], // Deep Tech Blues
+            colors: [Color(0xFF1E3C72), Color(0xFF2A5298)], 
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -71,7 +67,6 @@ class _LoginFormState extends State<_LoginForm> {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(24.0),
-              // 4. FLOATING CARD: Elevates the form off the background
               child: Card(
                 elevation: 12,
                 shape: RoundedRectangleBorder(
@@ -84,7 +79,6 @@ class _LoginFormState extends State<_LoginForm> {
                     child: BlocConsumer<LoginBloc, LoginState>(
                       listener: (context, state) {
                         if (state is LoginSuccess) {
-                          // 1. Show the success popup
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text('Login Successful!'),
@@ -93,8 +87,6 @@ class _LoginFormState extends State<_LoginForm> {
                             ),
                           );
                           
-                          // 2. NAVIGATE TO WELCOME SCREEN
-                          // pushReplacement means they can't swipe back to the login screen!
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                               builder: (context) => WelcomeScreen(token: state.token),
@@ -112,7 +104,7 @@ class _LoginFormState extends State<_LoginForm> {
                       },
                       builder: (context, state) {
                         return Form(
-                          key: _formKey, // Attach the validation key here
+                          key: _formKey, 
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -134,7 +126,6 @@ class _LoginFormState extends State<_LoginForm> {
                               ),
                               const SizedBox(height: 32),
 
-                              // USERNAME INPUT with Validation
                               TextFormField(
                                 controller: _usernameController,
                                 validator: (value) => value!.isEmpty ? 'Username cannot be empty' : null,
@@ -169,7 +160,7 @@ class _LoginFormState extends State<_LoginForm> {
                               ),
                               const SizedBox(height: 32),
 
-                              // DYNAMIC LOGIN BUTTON
+                              // LOGIN BUTTON
                               SizedBox(
                                 width: double.infinity,
                                 height: 55,

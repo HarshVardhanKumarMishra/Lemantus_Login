@@ -9,13 +9,13 @@ abstract class LoginState extends Equatable {
   List<Object> get props => [];
 }
 
-// 1. Before they click anything (Empty form)
+// 1. Empty form
 class LoginInitial extends LoginState {}
 
-// 2. While waiting for the API (Show a spinner)
+// 2. Show a spinner
 class LoginLoading extends LoginState {}
 
-// 3. When the API returns a 200 OK (Navigate to next screen)
+// 3. Navigate to next screen
 class LoginSuccess extends LoginState {
   final String token;
   const LoginSuccess(this.token);
@@ -24,7 +24,7 @@ class LoginSuccess extends LoginState {
   List<Object> get props => [token];
 }
 
-// 4. When the API returns an error (Show a red text box)
+// 4. Show a red text box
 class LoginFailure extends LoginState {
   final String error;
   const LoginFailure(this.error);

@@ -2,7 +2,6 @@
 
 import 'package:get_it/get_it.dart';
 
-// Notice the '../' added to these imports!
 import '../features/login/bloc/login_bloc.dart';
 import '../features/login/data_source/auth_remote_data_source.dart';
 import '../features/login/network/auth_api_service.dart';
